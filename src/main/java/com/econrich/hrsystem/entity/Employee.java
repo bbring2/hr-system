@@ -3,6 +3,7 @@ package com.econrich.hrsystem.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "employees")
@@ -44,5 +45,8 @@ public class Employee {
 
     @Column(columnDefinition = "DECIMAL(2,2)")
     private String commissionPct;
+
+    @ElementCollection
+    private List<JobHistory> jobHistoryList;
 
 }

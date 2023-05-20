@@ -2,6 +2,8 @@ package com.econrich.hrsystem.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "departments")
 public class Department {
@@ -21,4 +23,5 @@ public class Department {
 
     @Column(name = "department_name", columnDefinition = "VARCHAR(30)")
     private String name;
+
 }

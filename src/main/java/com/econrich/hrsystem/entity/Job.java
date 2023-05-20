@@ -1,9 +1,8 @@
 package com.econrich.hrsystem.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "jobs")
@@ -21,5 +20,8 @@ public class Job {
 
     @Column(name = "max_salary", columnDefinition = "DECIMAL(8)")
     private String maxSalary;
+
+    @ElementCollection
+    private List<JobHistory> jobHistoryList;
 
 }

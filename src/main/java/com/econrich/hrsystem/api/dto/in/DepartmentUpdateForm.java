@@ -4,9 +4,8 @@ import com.econrich.hrsystem.entity.Department;
 import org.springframework.lang.Nullable;
 
 public record DepartmentUpdateForm (
-        @Nullable Long locationId,
-        @Nullable Long managerId,
-        @Nullable String name
+        String departmentName,
+        Double salaryIncreaseRate
 ) {
     public static Department toEntity(DepartmentUpdateForm form) {
         return new Department();

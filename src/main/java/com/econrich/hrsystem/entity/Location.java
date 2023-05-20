@@ -21,8 +21,10 @@ public class Location {
     @Column(name = "postal_code", columnDefinition = "VARCHAR(12)")
     private String postalCode;
 
+    @Column(columnDefinition = "VARCHAR(30)")
     private String city;
 
-    private String state_province;
+    @Column(name = "state_province", columnDefinition = "VARCHAR(25)")
+    private String stateProvince;
 
 }
