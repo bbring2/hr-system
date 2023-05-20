@@ -23,7 +23,7 @@ public class EmployeeController {
     @Operation(summary = "특정 사원의 현재 정보 조회하기 API", description = "특정 사원의 id 값을 Path variable로 받습니다.")
     @GetMapping("/{id}")
     public ResponseEntity<EmployeeInfoResponse> search(@PathVariable ("id") Long id) {
-        return ResponseEntity.ok(new EmployeeInfoResponse());
+        return ResponseEntity.ok(service.getEmployeeInformation(id));
     }
 
 }

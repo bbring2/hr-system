@@ -1,15 +1,18 @@
 package com.econrich.hrsystem.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
 import java.time.LocalDate;
 import java.util.List;
 
 @Entity
+@Getter
 @Table(name = "employees")
 public class Employee {
 
     @Id
+    @Column(name = "employee_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

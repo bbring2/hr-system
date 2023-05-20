@@ -1,10 +1,10 @@
 package com.econrich.hrsystem.entity;
 
 import jakarta.persistence.*;
-
-import java.util.List;
+import lombok.Getter;
 
 @Entity
+@Getter
 @Table(name = "departments")
 public class Department {
 
