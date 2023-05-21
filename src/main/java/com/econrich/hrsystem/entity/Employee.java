@@ -3,8 +3,11 @@ package com.econrich.hrsystem.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 
 @Entity
 @Getter
@@ -44,12 +47,49 @@ public class Employee {
     private LocalDate hireDate;
 
     @Column(columnDefinition = "DECIMAL(8,2)")
-    private String salary;
+    private BigDecimal salary;
 
     @Column(columnDefinition = "DECIMAL(2,2)")
-    private String commissionPct;
+    private BigDecimal commissionPct;
 
-    @ElementCollection
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<JobHistory> jobHistoryList;
+
+    public void updateCommissionPct(Double commissionPct) {
+        this.commissionPct = BigDecimal.valueOf(commissionPct);
+    }
+
+    public void increaseSalary(Double commissionPct) {
+        updateCommissionPct(commissionPct);
+        this.salary = salary.add(salary.multiply(new BigDecimal(commissionPct)));
+    }
+
+    public void updateFirstName(String firstName) {
+        if(!firstName.isEmpty() && !this.firstName.equals(firstName)) {
+            this.firstName = firstName;
+        }
+    }
+
+    public void updateLastName(String lastName) {
+        if(!lastName.isEmpty() && !this.lastName.equals(lastName)) {
+            this.lastName = lastName;
+        }
+    }
+
+    public void updateEmail(String email) {
+        if(!email.isEmpty() && !this.email.equals(email)) {
+            this.email = email;
+        }
+    }
+
+    public void updatePhoneNumber(String phoneNumber) {
+        if(!phoneNumber.isEmpty() && !this.phoneNumber.equals(phoneNumber)) {
+            this.phoneNumber = phoneNumber;
+        }
+    }
+
+    public <T> void updateField(T value, Consumer<T> update) {
+        Optional.ofNullable(value).ifPresent(update);
+    }
 
 }

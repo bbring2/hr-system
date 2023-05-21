@@ -1,14 +1,23 @@
 package com.econrich.hrsystem.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
-@Embeddable
+@Getter
+@Entity
+@Table(name = "job_history")
 public class JobHistory {
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    private Employee employee;
+    @EmbeddedId
+    private JobHistoryId id;
+
+    @MapsId("employee")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
 
     @Column(name = "start_date")
     private LocalDate startDate;
@@ -16,10 +25,12 @@ public class JobHistory {
     @Column(name = "end_date")
     private LocalDate endDate;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    private Job job;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "job_id")
+    private Job job;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    private Department department;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "department_id")
+    private Department department;
 
 }

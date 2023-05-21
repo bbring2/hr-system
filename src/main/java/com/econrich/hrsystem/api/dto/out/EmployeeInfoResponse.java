@@ -3,6 +3,7 @@ package com.econrich.hrsystem.api.dto.out;
 import com.econrich.hrsystem.entity.Employee;
 import lombok.Builder;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Builder
@@ -13,8 +14,8 @@ public record EmployeeInfoResponse (
         String email,
         String phoneNumber,
         LocalDate hireDate,
-        Double salary,
-        String commissionPct,
+        BigDecimal salary,
+        BigDecimal commissionPct,
         String departmentName,
         String jobTitle,
         String managerFirstName,
@@ -28,7 +29,7 @@ public record EmployeeInfoResponse (
                 .email(employee.getEmail())
                 .phoneNumber(employee.getPhoneNumber())
                 .hireDate(employee.getHireDate())
-                .salary(Double.parseDouble(employee.getSalary()))
+                .salary(employee.getSalary())
                 .commissionPct(employee.getCommissionPct())
                 .departmentName(employee.getDepartment().getName())
                 .jobTitle(employee.getJob().getTitle())

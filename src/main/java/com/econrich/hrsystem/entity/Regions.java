@@ -1,8 +1,10 @@
 package com.econrich.hrsystem.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
 @Entity
+@Getter
 @Table(name = "regions")
 public class Regions {
 
